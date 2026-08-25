@@ -4,17 +4,6 @@ Angular web application for FIF 2026, the FIKIRI Innovation Festival taking plac
 
 The festival connects Congolese solutions and digital talent with the organizations that can buy, finance, recruit, and deploy them.
 
-## Product overview
-
-The public landing page presents:
-
-- three markets: solutions, talent, and skills;
-- eight festival experiences, including FIKIRI Village, Stage, Academy, Arena, and B2B;
-- the festival's 2026 impact targets;
-- the event dates, location, promise, and manifesto.
-
-The application also contains authentication and administration domains inherited from the previous FIKIRI platform. These areas will be aligned with the FIF 2026 experience as the migration continues.
-
 ## Tech stack
 
 - Angular 22.1 with standalone components and signals
@@ -31,12 +20,6 @@ The application also contains authentication and administration domains inherite
 - Node.js 24
 - pnpm 11, preferably enabled through Corepack
 - The FIF API running locally on `http://localhost:8000` for API-backed features
-
-Enable pnpm if needed:
-
-```bash
-corepack enable
-```
 
 ## Getting started
 
@@ -112,8 +95,6 @@ Run a production build and the Express SSR server:
 ```bash
 docker compose -f compose.prod.yml -p fif-web up --build
 ```
-
-Both configurations expose the application at [http://localhost:4200](http://localhost:4200). When using SSR in Docker, remember that `localhost` resolves inside the web container; configure an appropriate host or container network when the API runs elsewhere.
 
 ## Code quality
 
