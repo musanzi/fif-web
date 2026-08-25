@@ -1,0 +1,46 @@
+<footer class="bg-primary-950 text-white">
+  <div class="mx-auto max-w-screen-2xl px-6 py-16 sm:px-8 lg:px-16 lg:py-20 xl:px-24 2xl:px-32">
+    <div class="grid gap-12 border-b border-white/10 pb-14 grid-cols-2 lg:grid-cols-5">
+      <div class="col-span-2">
+        <a routerLink="/" class="inline-flex items-center gap-3" aria-label="FIF 2026, accueil">
+          <span class="flex size-11 items-center justify-center rounded-full bg-white">
+            <img src="/images/favicon.png" alt="" class="size-8 object-contain" />
+          </span>
+          <span class="text-3xl font-bold tracking-tight">FIF <span class="text-primary-400">2026</span></span>
+        </a>
+        <p class="mt-6 max-w-md text-base text-gray-400">
+          Les solutions congolaises au service de la transformation de la RDC. Construire en RDC, connecter les talents
+          et créer des opportunités.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500">Découvrir</h2>
+        <ul class="mt-5 space-y-3 text-base text-gray-300">
+          <li><a routerLink="/" fragment="concept" class="transition hover:text-white">Le concept</a></li>
+          <li><a routerLink="/" fragment="experience" class="transition hover:text-white">Les expériences</a></li>
+          <li><a routerLink="/" fragment="impact" class="transition hover:text-white">L'impact recherché</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500">Participer</h2>
+        <ul class="mt-5 space-y-3 text-base text-gray-300">
+          <li><a routerLink="/auth/sign-up" class="transition hover:text-white">Nous rejoindre</a></li>
+          <li><a routerLink="/auth/sign-in" class="transition hover:text-white">Se connecter</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500">Rendez-vous</h2>
+        <p class="mt-5 text-base font-semibold text-white">14–15 octobre 2026</p>
+        <p class="mt-2 text-base text-gray-400">Kinshasa, République Démocratique du Congo</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 pt-7 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {{ currentYear }} FIKIRI Innovation Festival. Tous droits réservés.</p>
+      <p>Construire en RDC. Connecter les talents. Créer des opportunités.</p>
+    </div>
+  </div>
+</footer>
