@@ -27,7 +27,7 @@ import { COMMITTEE_STATUS_LABELS, VOLUNTEER_STATUS_LABELS } from '../data';
   imports: [ChartComponent, DecimalPipe, MatButtonModule, MatCardModule, MatIconModule]
 })
 export default class Stats {
-  readonly statsResource = httpResource<{ data: IAdminStats }>(() => '/stats/admin-stats');
+  readonly statsResource = httpResource<{ data: IAdminStats }>(() => '/admin/stats');
 
   readonly areaChart: ApexChart = {
     type: 'area',

@@ -1,12 +1,11 @@
 import { patchState, signalStore, withMethods, withProps, withState } from '@ngrx/signals';
 import { inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { ISignInPayload } from '../interfaces/sign-in.interface';
+import { ISignInPayload, ISignInResponse } from '../interfaces/sign-in.interface';
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthStore } from './auth.store';
-import { IUser } from '@/app/shared/interfaces';
 import { IAuthRequestState } from '../interfaces/auth-state.interface';
 
 export const SignInStore = signalStore(
@@ -22,11 +21,12 @@ export const SignInStore = signalStore(
       pipe(
         tap(() => patchState(store, { isLoading: true, error: '' })),
         switchMap((payload) => {
-          return _http.post<{ data: IUser }>('/auth/sign-in/email', payload).pipe(
-            tap(({ data }) => {
+          return _http.post<ISignInResponse>('/api/auth/sign-in/email', { ...payload, rememberMe: true }).pipe(
+            tap(({ user }) => {
               patchState(store, { isLoading: false });
-              _authStore.setUser(data);
-              _router.navigate(['/admin']);
+              _authStore.setUser(user);
+              const redirect = _route.snapshot.queryParamMap.get('redirect');
+              _router.navigateByUrl(redirect?.startsWith('/admin') ? redirect : '/admin');
             }),
             catchError(() => {
               patchState(store, { isLoading: false, error: 'Adresse e-mail ou mot de passe incorrect.' });

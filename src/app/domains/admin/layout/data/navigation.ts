@@ -29,57 +29,29 @@ export const NAVIGATION: NavigationItem[] = [
     ]
   },
   {
-    id: 'content',
-    label: 'Contenu',
-    description: 'Gérez les appels et les solutions',
+    id: 'recruitment',
+    label: 'Recrutement',
+    description: 'Gérez les candidatures reçues',
     children: [
       {
-        id: 'calls',
-        label: 'Appels',
-        icon: 'megaphone',
-        route: 'calls',
-        activeOptions: { exact: false }
-      },
-      {
-        id: 'solutions',
-        label: 'Solutions',
-        icon: 'lightbulb',
-        route: 'solutions',
-        activeOptions: { exact: false }
-      },
-      {
-        id: 'outreachers',
-        label: 'Ambassadeurs',
-        icon: 'user-round-search',
-        route: 'outreachers',
+        id: 'applications',
+        label: 'Candidatures',
+        icon: 'files',
+        route: '/admin/applications',
         activeOptions: { exact: false }
       }
     ]
   },
   {
-    id: 'users-and-access',
-    label: 'Utilisateurs et accès',
-    description: 'Gérez les comptes et les permissions',
+    id: 'inbox',
+    label: 'Suivi',
+    description: "Consultez l'activité récente",
     children: [
       {
-        id: 'users',
-        label: 'Utilisateurs',
-        icon: 'users',
-        route: 'users',
-        activeOptions: { exact: false }
-      },
-      {
-        id: 'roles',
-        label: 'Rôles',
-        icon: 'shield-check',
-        route: 'roles',
-        activeOptions: { exact: false }
-      },
-      {
-        id: 'organizations',
-        label: 'Organisations',
-        icon: 'building-2',
-        route: 'organizations',
+        id: 'notifications',
+        label: 'Notifications',
+        icon: 'bell',
+        route: '/admin/notifications',
         activeOptions: { exact: false }
       }
     ]

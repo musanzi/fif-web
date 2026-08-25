@@ -1,6 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
 import { email, form, FormField, required, submit } from '@angular/forms/signals';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -11,7 +10,7 @@ import { ISignInPayload } from '../../interfaces';
 @Component({
   templateUrl: './sign-in.html',
   providers: [SignInStore],
-  imports: [Message, RouterLink, MatButtonModule, MatIconModule, MatInputModule, FormField]
+  imports: [Message, MatButtonModule, MatIconModule, MatInputModule, FormField]
 })
 export class AuthSignIn {
   protected store = inject(SignInStore);

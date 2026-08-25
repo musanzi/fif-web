@@ -19,7 +19,7 @@ export const AuthStore = signalStore(
   })),
   withComputed(({ user }) => ({
     hasRights: computed(() => {
-      return user()?.role === 'admin';
+      return user()?.role === 'ADMIN';
     })
   })),
   withMethods(({ _http, _router, ...store }) => ({
@@ -38,10 +38,10 @@ export const AuthStore = signalStore(
     signOut: rxMethod<void>(
       pipe(
         exhaustMap(() =>
-          _http.post<void>('/auth/logout', {}).pipe(
+          _http.post<{ success: true }>('/api/auth/sign-out', {}).pipe(
             tap(() => {
-              _router.navigate(['/']);
               patchState(store, { user: null });
+              _router.navigate(['/auth/sign-in']);
             }),
             catchError(() => {
               return of(null);
