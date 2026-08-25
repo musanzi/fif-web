@@ -24,7 +24,7 @@ export const AuthStore = signalStore(
   })),
   withMethods(({ _http, _router, ...store }) => ({
     initialize: () => {
-      return _http.get<{ data: IUser }>('/auth/me').pipe(
+      return _http.get<{ data: IUser }>('/admin/me').pipe(
         map(({ data }) => {
           patchState(store, { user: data });
           return data;
@@ -38,7 +38,7 @@ export const AuthStore = signalStore(
     signOut: rxMethod<void>(
       pipe(
         exhaustMap(() =>
-          _http.post<void>('/auth/sign-out', {}).pipe(
+          _http.post<void>('/auth/logout', {}).pipe(
             tap(() => {
               _router.navigate(['/']);
               patchState(store, { user: null });
