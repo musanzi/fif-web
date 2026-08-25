@@ -26,10 +26,7 @@ export const SignInStore = signalStore(
             tap(({ data }) => {
               patchState(store, { isLoading: false });
               _authStore.setUser(data);
-              const returnUrl = _route.snapshot.queryParamMap.get('returnUrl');
-              void (returnUrl?.startsWith('/') && !returnUrl.startsWith('//')
-                ? _router.navigateByUrl(returnUrl)
-                : _router.navigate(['/admin']));
+              _router.navigate(['/admin']);
             }),
             catchError(() => {
               patchState(store, { isLoading: false, error: 'Adresse e-mail ou mot de passe incorrect.' });

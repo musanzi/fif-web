@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { environment } from '@/environments/environment';
 import { Message } from '@/app/shared/ui/app-message/app-message';
 import { SignInStore } from '../../data-access/sign-in.store';
-import { ISignInPayload } from '../../interfaces/sign-in.interface';
+import { ISignInPayload } from '../../interfaces';
 
 @Component({
   templateUrl: './sign-in.html',

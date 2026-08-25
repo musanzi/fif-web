@@ -10,6 +10,10 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./modules/landing/routes')
       },
+      {
+        path: 'applications',
+        loadChildren: () => import('./modules/applications/routes')
+      },
       { path: '**', redirectTo: '' }
     ]
   }

@@ -10,21 +10,6 @@ const routes: Routes = [
         path: 'sign-in',
         title: 'Sign In',
         loadComponent: () => import('./features/sign-in/sign-in').then((c) => c.AuthSignIn)
-      },
-      {
-        path: 'sign-up',
-        title: 'Sign Up',
-        loadComponent: () => import('./features/sign-up/sign-up').then((c) => c.AuthSignUp)
-      },
-      {
-        path: 'forgot-password',
-        title: 'Forgot Password',
-        loadComponent: () => import('./features/forgot-password/forgot-password').then((c) => c.AuthForgotPassword)
-      },
-      {
-        path: 'reset-password',
-        title: 'Reset Password',
-        loadComponent: () => import('./features/reset-password/reset-password').then((c) => c.AuthResetPassword)
       }
     ]
   }

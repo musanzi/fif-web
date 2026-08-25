@@ -2,7 +2,7 @@ services:
   web:
     container_name: fif-web
     environment:
-      - PORT=4200
+      - PORT=4100
     build:
       context: .
       target: production

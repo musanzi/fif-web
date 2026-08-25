@@ -1,9 +1,9 @@
-<section class="relative isolate min-h-svh overflow-hidden text-white" aria-labelledby="hero-title">
+<section class="relative isolate min-h-[80svh] overflow-hidden text-white" aria-labelledby="hero-title">
   <img src="/images/innov.jpg" alt="" class="absolute inset-0 -z-30 size-full object-cover object-center" />
   <div class="absolute inset-0 -z-10 bg-gray-950/75"></div>
 
   <div
-    class="mx-auto flex min-h-[calc(100svh-5rem)] max-w-screen-2xl flex-col justify-center px-6 pb-24 pt-64 sm:px-8 lg:px-16 xl:px-24 2xl:px-32">
+    class="mx-auto flex min-h-[calc(100svh-5rem)] max-w-screen-2xl flex-col justify-center px-6 pb-24 pt-64 sm:px-8 lg:px-16 xl:px-28 2xl:px-36">
     <p class="text-base font-semibold uppercase tracking-[0.18em] text-primary-300">
       {{ festival.dates }} · {{ festival.location }}
     </p>
@@ -18,8 +18,10 @@
     </p>
 
     <div class="mt-10 flex flex-wrap gap-4">
-      <a mat-flat-button href="#concept">Découvrir le concept</a>
-      <a mat-stroked-button href="#experience" class="border-white! text-white!">Explorer l'expérience</a>
+      <a mat-flat-button routerLink="/applications/volunteer">Devenir volontaire</a>
+      <a mat-stroked-button routerLink="/applications/committee" class="border-white! text-white!"
+        >Rejoindre le comité</a
+      >
     </div>
 
     <div class="mt-16 grid max-w-4xl overflow-hidden rounded-md bg-white/15 sm:grid-cols-3">

@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://api.fif.co'
+  apiUrl: 'https://api-festival.fikiri.co'
 };
