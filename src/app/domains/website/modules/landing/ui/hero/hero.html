@@ -1,6 +1,17 @@
 <section class="relative isolate min-h-[80svh] overflow-hidden text-white" aria-labelledby="hero-title">
-  <img src="/images/innov.jpg" alt="" class="absolute inset-0 -z-30 size-full object-cover object-center" />
-  <div class="absolute inset-0 -z-10 bg-gray-950/75"></div>
+  <div class="absolute inset-0 -z-30 bg-gray-950" aria-hidden="true">
+    @for (image of heroImages; track image; let index = $index) {
+      <img
+        [src]="image"
+        alt=""
+        class="absolute inset-0 size-full object-cover object-center transition-[opacity,transform] duration-700 ease-in-out"
+        [class.opacity-100]="activeImageIndex() === index"
+        [class.scale-100]="activeImageIndex() === index"
+        [class.opacity-0]="activeImageIndex() !== index"
+        [class.scale-105]="activeImageIndex() !== index" />
+    }
+  </div>
+  <div class="absolute inset-0 -z-10 bg-gray-800/65"></div>
 
   <div
     class="mx-auto flex min-h-[calc(100svh-5rem)] max-w-screen-2xl flex-col justify-center px-6 pb-24 pt-64 sm:px-8 lg:px-16 xl:px-28 2xl:px-36">
