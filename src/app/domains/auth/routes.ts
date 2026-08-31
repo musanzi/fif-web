@@ -7,9 +7,36 @@ const routes: Routes = [
     component: AuthLayout,
     children: [
       {
-        path: 'sign-in',
-        title: 'Sign In',
+        path: 'choix',
+        title: 'Choisir un profil',
+        loadComponent: () => import('./features/account-choice/account-choice').then((c) => c.AuthAccountChoice)
+      },
+      {
+        path: 'inscription/organisation',
+        title: 'Inscription organisation',
+        loadComponent: () => import('./features/register/register').then((c) => c.AuthRegister),
+        data: { kind: 'organization' }
+      },
+      {
+        path: 'inscription/innovateur',
+        title: 'Inscription innovateur',
+        loadComponent: () => import('./features/register/register').then((c) => c.AuthRegister),
+        data: { kind: 'innovator' }
+      },
+      {
+        path: 'connexion',
+        title: 'Connexion',
         loadComponent: () => import('./features/sign-in/sign-in').then((c) => c.AuthSignIn)
+      },
+      {
+        path: 'sign-in',
+        redirectTo: 'connexion',
+        pathMatch: 'full'
+      },
+      {
+        path: '',
+        redirectTo: 'choix',
+        pathMatch: 'full'
       }
     ]
   }

@@ -8,5 +8,5 @@ export const adminGuard: CanActivateFn = (_route, state) => {
 
   return authStore.user() && authStore.hasRights()
     ? true
-    : router.createUrlTree(['/auth/sign-in'], { queryParams: { redirect: state.url } });
+    : router.createUrlTree(['/auth/connexion'], { queryParams: { redirect: state.url } });
 };

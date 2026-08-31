@@ -4,7 +4,7 @@ import { pipe, tap, catchError, of, exhaustMap, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser } from '@/app/shared/interfaces';
+import { IApiSuccess, IUser } from '@/app/shared/interfaces';
 
 interface IAuthStore {
   user: IUser | null;
@@ -18,13 +18,17 @@ export const AuthStore = signalStore(
     _router: inject(Router)
   })),
   withComputed(({ user }) => ({
-    hasRights: computed(() => {
-      return user()?.role === 'ADMIN';
+    hasRights: computed(() => user()?.role === 'ADMIN'),
+    isOrganization: computed(() => user()?.role === 'ORGANIZATION'),
+    isInnovator: computed(() => user()?.role === 'INNOVATOR'),
+    isParticipant: computed(() => {
+      const role = user()?.role;
+      return role === 'ORGANIZATION' || role === 'INNOVATOR';
     })
   })),
   withMethods(({ _http, _router, ...store }) => ({
     initialize: () => {
-      return _http.get<{ data: IUser }>('/admin/me').pipe(
+      return _http.get<IApiSuccess<IUser>>('/me').pipe(
         map(({ data }) => {
           patchState(store, { user: data });
           return data;
@@ -41,17 +45,22 @@ export const AuthStore = signalStore(
           _http.post<{ success: true }>('/api/auth/sign-out', {}).pipe(
             tap(() => {
               patchState(store, { user: null });
-              _router.navigate(['/auth/sign-in']);
+              _router.navigate(['/auth/connexion']);
             }),
-            catchError(() => {
-              return of(null);
-            })
+            catchError(() => of(null))
           )
         )
       )
     ),
     setUser: (user: IUser | null) => {
       patchState(store, { user });
+    },
+    homeRoute: (): string => {
+      const role = store.user()?.role;
+      if (role === 'ADMIN') return '/admin';
+      if (role === 'ORGANIZATION') return '/organisation';
+      if (role === 'INNOVATOR') return '/innovateur';
+      return '/';
     }
   }))
 );

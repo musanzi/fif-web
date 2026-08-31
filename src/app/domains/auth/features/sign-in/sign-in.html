@@ -1,6 +1,6 @@
 <section>
-  <h1 class="text-3xl font-semibold tracking-tight">Administration</h1>
-  <p class="mb-6 mt-2 text-sm text-gray-500">Connectez-vous avec votre compte administrateur FIF.</p>
+  <h1 class="text-3xl font-semibold tracking-tight">Connexion</h1>
+  <p class="mb-6 mt-2 text-sm text-gray-500">Connectez-vous à votre espace FIF (organisation, innovateur ou administration).</p>
   @if (store.error()) {
     <app-message
       class="mb-5"
@@ -38,4 +38,8 @@
       <span>{{ store.isLoading() ? 'Connexion…' : 'Se connecter' }}</span>
     </button>
   </form>
+  <p class="mt-6 text-center text-sm text-gray-500">
+    Pas encore de compte ?
+    <a routerLink="/auth/choix" class="font-medium text-primary-600 hover:underline">Créer un compte</a>
+  </p>
 </section>
