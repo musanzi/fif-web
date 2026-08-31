@@ -18,8 +18,11 @@ export interface IHealth {
   service: string;
 }
 
+import { IUserRole } from './marketplace.interface';
+
 export interface IUser {
   id: string;
   email: string;
-  role: string;
+  name: string;
+  role: IUserRole;
 }
