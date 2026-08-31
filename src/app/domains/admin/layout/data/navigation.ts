@@ -49,10 +49,38 @@ export const NAVIGATION: NavigationItem[] = [
     children: [
       {
         id: 'notifications',
-        label: 'Notifications',
+        label: 'Notifications recrutement',
         icon: 'bell',
         route: '/admin/notifications',
         activeOptions: { exact: false }
+      }
+    ]
+  },
+  {
+    id: 'marketplace',
+    label: 'Marketplace',
+    description: 'Besoins, projets et correspondances',
+    children: [
+      {
+        id: 'needs',
+        label: 'Fiches de besoin',
+        icon: 'files',
+        route: '/admin/besoins',
+        activeOptions: { exact: false }
+      },
+      {
+        id: 'projects',
+        label: 'Projets',
+        icon: 'lightbulb',
+        route: '/admin/projets',
+        activeOptions: { exact: false }
+      },
+      {
+        id: 'matches',
+        label: 'Correspondances',
+        icon: 'sparkles',
+        route: '/admin/matchs',
+        activeOptions: { exact: true }
       }
     ]
   }
