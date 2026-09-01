@@ -13,6 +13,14 @@ export const routes: Route[] = [
     loadChildren: () => import('./domains/admin/routes')
   },
   {
+    path: 'organisation',
+    loadChildren: () => import('./domains/organization/routes')
+  },
+  {
+    path: 'innovateur',
+    loadChildren: () => import('./domains/innovator/routes')
+  },
+  {
     path: '',
     loadChildren: () => import('./domains/website/routes')
   }

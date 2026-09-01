@@ -25,6 +25,31 @@ const routes: Routes = [
         path: 'notifications',
         title: 'Notifications',
         loadComponent: () => import('./modules/notifications/features/notification-list/notification-list')
+      },
+      {
+        path: 'besoins',
+        title: 'Fiches de besoin',
+        loadComponent: () => import('./modules/marketplace/features/admin-need-list/admin-need-list')
+      },
+      {
+        path: 'besoins/:id',
+        title: 'Détail fiche',
+        loadComponent: () => import('./modules/marketplace/features/admin-need-detail/admin-need-detail')
+      },
+      {
+        path: 'projets',
+        title: 'Projets',
+        loadComponent: () => import('./modules/marketplace/features/admin-project-list/admin-project-list')
+      },
+      {
+        path: 'projets/:id',
+        title: 'Détail projet',
+        loadComponent: () => import('./modules/marketplace/features/admin-project-detail/admin-project-detail')
+      },
+      {
+        path: 'matchs',
+        title: 'Correspondances',
+        loadComponent: () => import('./modules/marketplace/features/admin-match-list/admin-match-list')
       }
     ]
   }

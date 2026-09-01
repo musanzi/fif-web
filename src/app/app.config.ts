@@ -6,6 +6,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideRouter, TitleStrategy, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { provideIcons } from '@/app/core/icons/provider';
 import { provideTheming } from '@/app/core/theming';
+import { MarketplaceCatalogStore } from '@/app/shared/data-access';
 import { routes } from './app.routes';
 import { httpInterceptor } from './core/interceptors';
 import { PageTitleStrategy } from './core/strategies';
@@ -28,8 +29,14 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => {
       const platformId = inject(PLATFORM_ID);
       const authStore = inject(AuthStore);
+      const catalogStore = inject(MarketplaceCatalogStore);
 
-      return isPlatformBrowser(platformId) ? authStore.initialize() : undefined;
+      if (!isPlatformBrowser(platformId)) {
+        return undefined;
+      }
+
+      catalogStore.load().subscribe();
+      return authStore.initialize();
     }),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NAVIGATION, NavigationItem } from '@/app/domains/admin/layout/data/navigation';
 import { Navigation } from '../navigation/navigation';
 import { User } from '../user/user';
 
@@ -11,4 +12,6 @@ import { User } from '../user/user';
   },
   templateUrl: './sidebar.html'
 })
-export class Sidebar {}
+export class Sidebar {
+  readonly navigation = input<NavigationItem[]>(NAVIGATION);
+}

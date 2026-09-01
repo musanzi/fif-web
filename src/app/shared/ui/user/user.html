@@ -17,7 +17,7 @@
   <button class="py-2 [&>span]:flex [&>span]:items-center" mat-menu-item>
     <!-- <img class="size-9 rounded-lg object-cover" [src]="avatarImageUrl()" alt="User avatar" /> -->
     <div class="ml-3 flex min-w-0 flex-auto flex-col select-none">
-      <div class="truncate font-medium">Administrateur FIF</div>
+      <div class="truncate font-medium">{{ user()?.name || roleLabel() }}</div>
       <div class="text-on-surface-variant truncate text-xs">{{ user()?.email }}</div>
     </div>
   </button>

@@ -1,7 +1,7 @@
 import { Tree, TreeItem, TreeItemGroup } from '@angular/aria/tree';
 import { CdkMonitorFocus } from '@angular/cdk/a11y';
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIcon } from '@angular/material/icon';
 import { isActive, IsActiveMatchOptions, NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -16,7 +16,8 @@ import { NAVIGATION, NavigationItem } from '@/app/domains/admin/layout/data/navi
 export class Navigation {
   private router = inject(Router);
 
-  protected navigation = signal<NavigationItem[]>(NAVIGATION);
+  readonly items = input<NavigationItem[]>(NAVIGATION);
+  protected navigation = signal<NavigationItem[]>([]);
   protected navigationEnd = toSignal(
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -25,6 +26,10 @@ export class Navigation {
   );
 
   constructor() {
+    effect(() => {
+      this.navigation.set(this.items());
+    });
+
     effect(() => {
       const navigationEnd = this.navigationEnd();
       if (!navigationEnd) {

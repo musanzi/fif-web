@@ -1,6 +1,5 @@
 import { AuthStore } from '@/app/domains/auth/data-access';
-// import { environment } from '@/environments/environment';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatDivider } from '@angular/material/list';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
@@ -12,6 +11,8 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 })
 export class User {
   authStore = inject(AuthStore);
+
+  readonly roleLabel = input('Utilisateur FIF');
 
   user = computed(() => this.authStore.user());
 

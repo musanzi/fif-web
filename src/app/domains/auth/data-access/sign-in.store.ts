@@ -24,9 +24,22 @@ export const SignInStore = signalStore(
           return _http.post<ISignInResponse>('/api/auth/sign-in/email', { ...payload, rememberMe: true }).pipe(
             tap(({ user }) => {
               patchState(store, { isLoading: false });
-              _authStore.setUser(user);
+              _authStore.setUser({
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                role: user.role as 'ORGANIZATION' | 'INNOVATOR' | 'ADMIN'
+              });
               const redirect = _route.snapshot.queryParamMap.get('redirect');
-              _router.navigateByUrl(redirect?.startsWith('/admin') ? redirect : '/admin');
+              const fallback = _authStore.homeRoute();
+              const target =
+                redirect &&
+                (redirect.startsWith('/admin') ||
+                  redirect.startsWith('/organisation') ||
+                  redirect.startsWith('/innovateur'))
+                  ? redirect
+                  : fallback;
+              _router.navigateByUrl(target);
             }),
             catchError(() => {
               patchState(store, { isLoading: false, error: 'Adresse e-mail ou mot de passe incorrect.' });
