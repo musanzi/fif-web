@@ -11,7 +11,6 @@ import { FESTIVAL } from '../../data/festival';
 export class Hero {
   protected readonly festival = FESTIVAL;
   protected readonly heroImages = [
-    '/images/gallery/img-1.jpg',
     '/images/gallery/img-2.jpg',
     '/images/gallery/img-3.jpg',
     '/images/gallery/img-4.jpg',

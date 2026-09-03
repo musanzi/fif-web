@@ -7,7 +7,7 @@ const routes: Routes = [
     component: AuthLayout,
     children: [
       {
-        path: 'choix',
+        path: 'choice',
         title: 'Choisir un profil',
         loadComponent: () => import('./features/account-choice/account-choice').then((c) => c.AuthAccountChoice)
       },
@@ -35,7 +35,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'choix',
+        redirectTo: 'choice',
         pathMatch: 'full'
       }
     ]
